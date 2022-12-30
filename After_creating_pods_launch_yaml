@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myweb-rs
+spec:
+  replicas: 1
+  selector:
+     matchLabels:
+       app: wed1
+  template:
+     metadata:
+       name: "mypod2"
+       labels:
+         dc: IN
+         app: wed1
+         env: test
+     spec:
+        containers:
+        - name: "myweb"
+          image: "tomcat"
